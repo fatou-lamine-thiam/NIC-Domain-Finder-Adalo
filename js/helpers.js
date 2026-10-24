@@ -31,27 +31,41 @@ function formatDate(date){
 
 }
 
-// ---------------------------
-// Copier dans le presse-papiers
-// ---------------------------
 
-async function copy(text){
+async function copy(text) {
+    try {
+        // Méthode moderne
+        if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(text);
+            showToast("✔ Domaine copié");
+            return;
+        }
 
-    try{
+        // Méthode de secours pour les WebView
+        const textarea = document.createElement("textarea");
+        textarea.value = text;
+        textarea.setAttribute("readonly", "");
+        textarea.style.position = "fixed";
+        textarea.style.left = "-9999px";
+        textarea.style.top = "0";
 
-        await navigator.clipboard.writeText(text);
+        document.body.appendChild(textarea);
+        textarea.select();
+        textarea.setSelectionRange(0, textarea.value.length);
 
-        showToast("✔ Domaine copié");
+        const success = document.execCommand("copy");
+        textarea.remove();
 
+        if (success) {
+            showToast("✔ Domaine copié");
+        } else {
+            showToast("Copie impossible sur cet appareil");
+        }
+    } catch (error) {
+        showToast("Copie impossible sur cet appareil");
     }
-
-    catch{
-
-        showToast("Impossible de copier");
-
-    }
-
 }
+
 
 // ---------------------------
 // Toast
