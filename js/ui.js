@@ -231,27 +231,24 @@ ${data.nameservers.map(ns=>`<li>${ns}</li>`).join("")}
 
     }
 
-    // ==========================
-    // Conseil
-    // ==========================
-
-    html += `
+    
+html += `
 
 <div class="info-box mt-20">
 
 <h4>
-
 💡 Conseil
-
 </h4>
 
 <p>
-
 ${advice}
-
 </p>
 
 </div>
+
+`;
+
+resultSection.innerHTML = html;
 
 
 
