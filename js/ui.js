@@ -287,7 +287,7 @@ ${primaryButton}
 
 class="result-btn result-btn-secondary"
 
-onclick="alert('Clic sur Copier détecté')"
+onclick="copy('${data.domain}')"
 
 📋 Copier
 
