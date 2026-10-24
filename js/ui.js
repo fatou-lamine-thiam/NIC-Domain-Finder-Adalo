@@ -125,33 +125,7 @@ if(homeContent){
 
         "Ce domaine est déjà enregistré. Consultez les informations WHOIS pour davantage de détails.";
 
-    // ==========================
-    // Bouton principal
-    // ==========================
-
-    const primaryButton =
-
-        data.available
-
-        ?
-
-        `
-        <button class="result-btn result-btn-primary">
-
-            Enregistrer ce domaine
-
-        </button>
-        `
-
-        :
-
-        `
-        <button class="result-btn result-btn-primary">
-
-            Voir le WHOIS
-
-        </button>
-        `;
+   
 
     let html = `
 
@@ -279,27 +253,7 @@ ${advice}
 
 </div>
 
-<div class="result-actions">
 
-${primaryButton}
-
-<button
-
-class="result-btn result-btn-secondary"
-
-onclick="copy('${data.domain}')"
-
-📋 Copier
-
-</button>
-
-</div>
-
-</div>
-
-`;
-
-    resultSection.innerHTML = html;
 
     // ==========================
     // Suggestions
